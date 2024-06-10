@@ -23,7 +23,7 @@ app.use(express.json());
 
 // Route files
 // Gift API Task 1: import the giftRoutes and store in a constant called giftroutes
-app.use("/gifts",giftRoutes)
+app.use("/api/gifts",giftRoutes)
 // Search API Task 1: import the searchRoutes and store in a constant called searchRoutes
 //{{insert code here}}
 
