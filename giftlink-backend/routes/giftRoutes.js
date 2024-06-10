@@ -1,9 +1,10 @@
-
-const connectToDatabase = require('../models/db');
 const express = require('express');
 const router = express.Router();
+const connectToDatabase = require('../models/db');
+const logger = require('../logger');
 
 router.get('/', async (req, res) => {
+    logger.info('retrieving all the gifts');
     try {
         // Task 1: Connect to MongoDB and store connection to db constant
         const db = await connectToDatabase();
@@ -23,6 +24,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
+    logger.info('/ retrieving a single gift by ID');
     try {
         // Task 1: Connect to MongoDB and store connection to db constant
         const db = await connectToDatabase();
@@ -34,7 +36,7 @@ router.get('/:id', async (req, res) => {
 
         // Task 3: Find a specific gift by ID using the collection.fineOne method and store in constant called gift
         const gift = await collection.findOne({ id: id });
-        
+
         if (!gift) {
             return res.status(404).send('Gift not found');
         }
