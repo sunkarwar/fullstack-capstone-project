@@ -9,6 +9,7 @@ const {loadData} = require("./util/import-mongo/index");
 
 const giftRoutes = require("./routes/giftRoutes");
 const searchRoutes = require("./routes/searchRoutes");
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 app.use("*",cors());
@@ -30,6 +31,7 @@ app.use(pinoHttp({ logger }));
 
 app.use("/api/gifts",giftRoutes);
 app.use("/api/search",searchRoutes);
+app.use("/api/auth",authRoutes);
 
 // Global Error Handler
 app.use((err, req, res, next) => {
